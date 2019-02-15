@@ -367,9 +367,10 @@ function removeAddressBook(callback,id){
  * Get list of email templates
  *
  * @param callback
+ * @param onlyMy return only custom templates
  */
-function listEmailTemplates(callback){
-    sendRequest('templates', 'GET', {}, true, callback);
+function listEmailTemplates(callback, onlyMy = false){
+    sendRequest(`templates${onlyMy ? '?owner=me' : ''}`, 'GET', {}, true, callback);
 }
 
 /**
